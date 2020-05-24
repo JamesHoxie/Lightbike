@@ -25,7 +25,7 @@ p2_wins = False
 
 def pause():
 	paused = True
-	messageToScreen("Paused, Press C to continue or Q to quit.", white)
+	message_to_screen("Paused, Press C to continue or Q to quit.", white)
 	pygame.display.update()
 
 	while paused:
@@ -47,28 +47,16 @@ def text_objects(text, color):
 	text_surface = FONT.render(text, True, color)
 	return text_surface, text_surface.get_rect()
 
-def messageToScreen(msg, color):
+def message_to_screen(msg, color):
 	text_surface, text_rect = text_objects(msg, color)
 	text_rect.center = (DISPLAY_WIDTH/2), (DISPLAY_HEIGHT/3)
 	game_display.blit(text_surface, text_rect)
-	# screen_text = FONT.render(msg, True, color)
-	# game_display.blit(screen_text, [DISPLAY_WIDTH/8, DISPLAY_HEIGHT/4])
 
 def move(light_bike, color):
 	for XnY in light_bike:
 		game_display.fill(color, rect=[XnY[0], XnY[1], BLOCK_SIZE, BLOCK_SIZE])
 
-# def checkForCollision(light_bike, light_bike_front):
-# 	for XnY in light_bike[:-1]:
-# 		if XnY == light_bike_front:
-# 			return True
-
-# 	return False
-
 def check_for_collisions(light_bikes, light_trails, lead_x_1, lead_y_1, lead_x_2, lead_y_2):
-	# print("\nlight_trails" + str(light_trails))
-	# print("\nlight_bike_1" + str(light_bikes[0]))
-	# print("\nlight_bike_2" + str(light_bikes[1]))
 	first_iteration = True
 	global p1_wins
 	global p2_wins
@@ -120,10 +108,10 @@ def game_loop():
 
 	while not game_exit:
 		if p1_wins:
-			messageToScreen("P1 wins!, press C to play again or Q to quit", red)
+			message_to_screen("P1 wins!, press C to play again or Q to quit", red)
 
 		elif p2_wins:
-			messageToScreen("P2 wins!, press C to play again or Q to quit", red)
+			message_to_screen("P2 wins!, press C to play again or Q to quit", red)
 
 		pygame.display.update()	
 
